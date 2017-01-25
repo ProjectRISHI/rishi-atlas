@@ -16,21 +16,21 @@ conn=mysql.connect()
 cur= conn.cursor()
 print 'Successfully Connected to Database'
 
-# Querying Database
-query="""\
-    SELECT * from table1;
-    """
-df=pd.read_sql(query,conn)
-
-# Creating Table HTML
-data = ''
-for index, row in df.iterrows():
-	temp = '<tr><td>'+row['Name']+'</td><td>'+row['Phone']+'</td><td>'+row['Sector']+'</td><td>'+row['Chapter']+'</td><td>'+row['Village']+'</td><td>'+row['Name']+'</td><td>'+row['Email']+'</td></tr>'
-	data = data + temp
-
-
 @app.route("/")
 def start():
+
+	# Querying Database
+	query="""\
+	    SELECT * from table1;
+	    """
+	df=pd.read_sql(query,conn)
+
+	# Creating Table HTML
+	data = ''
+	for index, row in df.iterrows():
+		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Phone']+'</td><td>'+row['Sector']+'</td><td>'+row['Chapter']+'</td><td>'+row['Village']+'</td><td>'+row['Name']+'</td><td>'+row['Email']+'</td></tr>'
+		data = data + temp
+	
 	return render_template('index.html', data=data)
 
 if __name__ == "__main__":
