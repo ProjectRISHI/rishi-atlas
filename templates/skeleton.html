@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Social Enterprise Database</title>
+ 
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,700|Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
+
+</head>
+
+    <!-- Header -->
+    <!-- Navigation -->
+    <nav  class="navbar navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <span style="background-color:black;" class="sr-only">Toggle navigation</span>
+                    <span style="background-color:black;" class="icon-bar"></span>
+                    <span style="background-color:black;" class="icon-bar"></span>
+                    <span style="background-color:black;" class="icon-bar"></span>
+                </button>
+                <a  class="navbar-brand" href="/">
+                    <img class="logo hidden-sm hidden-xs" id="logolg" src="{{ url_for('static', filename='img/logos/logoweb.png') }}"/>
+                    <img id="logo-sm-md"class="hidden-lg hidden-md" width="130" height="65" src="{{ url_for('static', filename='img/logos/logo2.png') }}"/>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div  class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul  class="nav navbar-nav">
+                    <li>
+                        <a href="http://www.projectrishi.org/projects"><h5>Projects</h5></a>
+                    </li>
+                    <li>
+                        <a  href="http://www.projectrishi.org/chapters"><h5>Chapters</h5></a>
+                    </li>
+                    <li>
+                        <a  href="http://www.projectrishi.org/blog"><h5>Blog</h5></a>
+                    </li>
+                    <li>
+                        <a href="http://www.projectrishi.org/"><h5>About</h5></a>
+                    </li>
+                    <li style="padding-top:5px;">
+                        <a class="btn btn-default btn-sm btn-navbar" href="http://www.projectrishi.org/donate"><h5>DONATE</h5></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    {% block header %}
+    {% endblock %}
+
+
+    <!-- Section -->
+    {% block section %}
+    {% endblock %}
+
+    <!-- Donate Section -->
+    <div class="sec">
+        <p align="middle">100% of your donation brings empowering solutions to people in need. Support us today!&nbsp;&nbsp;&nbsp;<a href="donate"><strong>DONATE >></strong></a></p>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container" >
+            <div class="row text-center">
+                <div class="col-sm-3">
+                    <h5><font color="#2AA44E">About</font></h5>
+                    <p align="middle" style="color:#5d5d5d">
+                        <a href="http://www.projectrishi.org/projects"><font color="#5d5d5d">Projects</font></a> <br>
+                        <a href="http://www.projectrishi.org/methodology"><font color="#5d5d5d">Methodology</font></a> <br>
+                        <a href="http://www.projectrishi.org/chapters"><font color="#5d5d5d">Chapters</font></a> <br>
+                        <a href="http://www.projectrishi.org/locations"><font color="#5d5d5d">Locations</font></a> <br>
+                        <a href="http://www.projectrishi.org/blog"><font color="#5d5d5d">Blog</font></a> <br><br></p>
+                </div>
+                <div class="col-sm-3">
+                    <h5><font color="#292D72">Connect</font></h5>
+                    <p align="middle">
+                    <a href="http://www.instagram.com/projectrishi"><font color="#5d5d5d">Instagram</font></a> <br>
+                    <a href="http://www.facebook.com/projectrishi"><font color="#5d5d5d">Facebook</font></a> <br>
+                    <a href="http://www.twitter.com/projectrishi"><font color="#5d5d5d">Twitter</font></a> <br>
+                    <a href="https://www.linkedin.com/company/projectrishi"><font color="#5d5d5d">LinkedIn</font></a> <br>
+                    <a href="http://eepurl.com/bIbxVb"><font color="#5d5d5d">Newsletter</font></a> <br>
+                    <a href="http://www.projectrishi.org/"><font color="#5d5d5d">Apply</font></a> <br><br></p>
+                </div>
+                <div class="col-sm-3">
+                    <h5 align="middle"><a href="donate"><font color="#F06B2F"><strong>Donate</strong></font></a></h5>
+                    <h5 align="middle"><a href="mailto:contact@projectrishi.org"><font color="#F06B2F">Contact</font></a></h5><br>
+                </div>
+                <div class="col-sm-3 text-center">
+                    <br>
+                    <a href="http://www.projectrishi.org"><img id="logofoot" align="middle" src="{{ url_for('static', filename='img/logos/logo3.png') }}"></a>
+                    <p style="font-size:80%;"class="text-center"><font color="#5d5d5d">Copyright &copy; Project RISHI 2016</font>
+                    <br>
+                    <a href="privacypolicy"><font color="#5d5d5d">Privacy Policy</font></a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
+    <!-- Data Table -->
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/table.js') }}"</script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,51 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<style>
-th {
-    border-bottom: 1px solid #d6d6d6;
-}
+{% extends "skeleton.html" %}
 
-tr:nth-child(even) {
-    background: #e9e9e9;
-}
-</style>
-</head>
-<body>
+{% block header%}
+    <header class="intro_sub soccent">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <p align="left" class="brand-heading">"My goal is to see healthy children, healthy families, and healthy communities."</p>
+                        <p align="left" class="intro-text">-Dr. Eri Srivatsan</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </header>
+    <!-- Small Green Border -->
+    <div class="apply"></div>
+{% endblock %}
 
-<div data-role="page" id="pageone">
-  <div data-role="header">
-    <h1>RISHI NGO Database</h1>
-  </div>
-  
-  <div data-role="main" class="ui-content">
-    <form>
-      <input id="filterTable-input" data-type="search" placeholder="Search For NGO...">
-    </form>
-    <table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable" data-filter="true" data-input="#filterTable-input">
-      <thead>
-        <tr>
-          <th data-priority="6">NGO</th>
-          <th>Phone Number</th>
-          <th data-priority="1">Sector</th>
-          <th data-priority="2">State Based In</th>
-          <th data-priority="3">Chapter Affiliate</th>
-          <th data-priority="4">Village Worked In</th>
-          <th data-priority="5">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-       {{ data|safe }}
-      </tbody>
-    </table>
-  </div>
-
-</div> 
-
-</body>
-</html>
-
+{% block section %}
+    <div class="container content-section text-center table-responsive">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="color:#5d5d5d">Social Enterprise Database</h2>
+                <hr>
+            </div>
+        </div>
+        <table id="db-2" class="table table-hover table-striped table-bordered b" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th id="NGO">NGO</th>
+                    <th id="Phone">Phone Number</th>
+                    <th id="Sector">Sector</th>
+                    <th id="State Based In">State Based In</th>
+                    <th id="Chapter Affiliate">Chapter Affiliate</th>
+                    <th id="Village Worked In">Village Worked In</th>
+                    <th id="Email">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ data| safe }}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
