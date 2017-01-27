@@ -2,6 +2,7 @@ from flask import Flask,request,render_template,flash
 from flaskext.mysql import MySQL
 from wtforms import Form, validators,TextField,RadioField,SubmitField,BooleanField,HiddenField
 import db_config
+from flask_basicauth import BasicAuth
 import pandas as pd
 
 print 'Attempting to Enter Database'
@@ -16,7 +17,13 @@ conn=mysql.connect()
 cur= conn.cursor()
 print 'Successfully Connected to Database'
 
-@app.route("/")
+
+app.config['BASIC_AUTH_USERNAME'] = 'john'
+app.config['BASIC_AUTH_PASSWORD'] = 'rishi'
+basic_auth = BasicAuth(app)
+
+@app.route('/')
+@basic_auth.required
 def start():
 
 	# Querying Database
