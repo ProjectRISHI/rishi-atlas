@@ -5,7 +5,6 @@ import db_config
 from flask_basicauth import BasicAuth
 import pandas as pd
 
-print 'Attempting to Enter Database'
 app = Flask(__name__)
 app.config['MYSQL_DATABASE_HOST'] = db_config.host
 app.config["MYSQL_DATABASE_USER"] = db_config.user
@@ -15,11 +14,9 @@ app.config["MYSQL_DATABASE_PORT"] = db_config.port
 mysql=MySQL(app)
 conn=mysql.connect()
 cur= conn.cursor()
-print 'Successfully Connected to Database'
 
-
-app.config['BASIC_AUTH_USERNAME'] = 'john'
-app.config['BASIC_AUTH_PASSWORD'] = 'rishi'
+app.config['BASIC_AUTH_USERNAME'] = db_config.user
+app.config['BASIC_AUTH_PASSWORD'] = db_config.password_auth
 basic_auth = BasicAuth(app)
 
 @app.route('/')
@@ -41,5 +38,5 @@ def start():
 	return render_template('index.html', data=data)
 
 if __name__=="__main__":
-	app.run(debug=True)
+	app.run(debug=False)
 
