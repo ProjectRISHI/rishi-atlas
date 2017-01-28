@@ -1,6 +1,6 @@
 *.pyc
-*.png
 *.jpg
+*.png
 *.jpeg
 *.env
 *.sublime-project
