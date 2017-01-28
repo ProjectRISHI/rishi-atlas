@@ -2,4 +2,7 @@
 *.png
 *.jpg
 *.jpeg
+*.env
+*.sublime-project
+*.sublime-workspace
 db_config.py
