@@ -1,7 +1,6 @@
 import os
 from flask import Flask,request,render_template,flash
 from flaskext.mysql import MySQL
-import db_config
 from flask_basicauth import BasicAuth
 import pandas as pd
 
