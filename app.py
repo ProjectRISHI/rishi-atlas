@@ -5,7 +5,7 @@ from flask_basicauth import BasicAuth
 import pandas as pd
 
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_HOST'] = 98.130.0.115
+app.config['MYSQL_DATABASE_HOST'] ="98.130.0.115"
 app.config["MYSQL_DATABASE_USER"] = os.environ.get("USER")
 app.config["MYSQL_DATABASE_PASSWORD"] = os.environ.get("PASSWORD")
 app.config["MYSQL_DATABASE_DB"] = os.environ.get("DB")
@@ -37,5 +37,5 @@ def start():
 	return render_template('index.html', data=data)
 
 if __name__=="__main__":
-	app.run(debug=False,port=5000)
+	app.run(debug=False)
 
