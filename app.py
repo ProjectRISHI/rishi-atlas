@@ -36,6 +36,23 @@ def start():
 	
 	return render_template('index.html', data=data)
 
+@app.route('/alumni')
+@basic_auth.required
+def alumni():
+
+	# Querying Database
+	query2="""\
+	    SELECT * from alumni;
+	    """
+	df2=pd.read_sql(query2,conn)
+
+	# Creating Table HTML
+	data2 = ''
+	for index, row in df2.iterrows():
+		temp = '<tr><td>'+row['first_name']+'</td><td>'+row['last_name']+'</td><td>'+row['email']+'</td><td>'+row['chapter_aff']+'</td><td>'+row['curr_city']+'</td><td>'+row['occupation']+'</td><td>'+row['institute_name']+'</td></tr>'
+		data2 = data2 + temp
+	
+	return render_template('alumni.html', data=data2)
+
 if __name__=="__main__":
 	app.run(debug=False)
-
