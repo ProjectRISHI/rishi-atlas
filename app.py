@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask,request,render_template,flash
 from flaskext.mysql import MySQL
@@ -18,8 +17,11 @@ app.config['BASIC_AUTH_PASSWORD'] = os.environ.get("PASSWORD_AUTH")
 basic_auth = BasicAuth(app)
 
 @app.route('/')
-@basic_auth.required
 def start():
+	return render_template('index.html')
+
+@app.route('/soccent')
+def soccent():
 	conn=mysql.connect()
 	# Querying Database
 	query="""\
@@ -33,7 +35,7 @@ def start():
 		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Phone']+'</td><td>'+row['Sector']+'</td><td>'+row['Chapter']+'</td><td>'+row['Village']+'</td><td>'+row['Name']+'</td><td>'+row['Email']+'</td></tr>'
 		data = data + temp
 	conn.close()
-	return render_template('index.html', data=data)
+	return render_template('soccent.html', data=data)
 
 @app.route('/alumni')
 @basic_auth.required

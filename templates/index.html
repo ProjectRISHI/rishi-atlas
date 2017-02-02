@@ -1,45 +1,42 @@
-{% extends "skeleton.html" %}
-{% block name %}Social Enterprise Database{% endblock %}
-{% block header%}
-    <header class="intro_sub soccent">
-        <div class="intro-body">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>RISHI Atlas</title>
+ 
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,700|Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <!-- Intro Header -->
+    <header style="height: 100%;" class="intro">
+        <div style="background-color: black" class="intro-body">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5">
-                        <p align="left" class="brand-heading">"My goal is to see healthy children, healthy families, and healthy communities."</p>
-                        <p align="left" class="intro-text">-Dr. Eri Srivatsan</p>
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading"><font style="font-size:100px" color="#F16822">RISHI</font><font style="font-size:100px" color="#21A54A">ATLAS</font>
+                        <p class="intro-text">Coming Soon.</p>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </header>
-    <!-- Small Green Border -->
-    <div class="apply"></div>
-{% endblock %}
 
-{% block section %}
-    <div class="container content-section text-center table-responsive">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 style="color:#5d5d5d">Social Enterprise Database</h2>
-                <hr>
-            </div>
-        </div>
-        <table id="db-2" class="table table-hover table-striped table-bordered b" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th id="NGO">NGO</th>
-                    <th id="Phone">Phone Number</th>
-                    <th id="Sector">Sector</th>
-                    <th id="State Based In">State Based In</th>
-                    <th id="Chapter Affiliate">Chapter Affiliate</th>
-                    <th id="Village Worked In">Village Worked In</th>
-                    <th id="Email">Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{ data| safe }}
-            </tbody>
-        </table>
-    </div>
-{% endblock %}
+</body>
+
+</html>
