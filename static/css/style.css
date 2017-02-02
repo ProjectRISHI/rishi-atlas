@@ -1016,28 +1016,28 @@ body {
     color:black;
 }
 .dataTables_filter {
-   width: 50%;
+   width: auto;
    float: right;
    text-align:right;
    color:black;
 }
 
 .dataTables_length {
-   width: 50%;
+   width: auto;
    float: left;
    text-align:left;
    color:black;
 }
 
 .dataTables_paginate.paging_simple_numbers {
-   width: 50%;
+   width: auto;
    float: right;
    text-align:right;
    color:black;
 }
 
 .dataTables_info {
-   width: 50%;
+   width: auto;
    float: left;
    text-align:left;
    color:black;
