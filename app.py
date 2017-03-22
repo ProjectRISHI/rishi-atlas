@@ -32,7 +32,7 @@ def start():
 # 	# Creating Table HTML
 # 	data = ''
 # 	for index, row in df.iterrows():
-# 		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Phone']+'</td><td>'+row['Sector']+'</td><td>'+row['Chapter']+'</td><td>'+row['Village']+'</td><td>'+row['Name']+'</td><td>'+row['Email']+'</td></tr>'
+#		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Domain']+'</td><td>'+row['Email']+'</td><td>'+row['Phone']+'</td><td><a href="'+row['pdf']+'">PDF</a></td></tr>'
 # 		data = data + temp
 # 	conn.close()
 # 	return render_template('soccent.html', data=data)
