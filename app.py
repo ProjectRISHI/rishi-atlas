@@ -12,8 +12,8 @@ app.config["MYSQL_DATABASE_DB"] = os.environ.get("MYSQL_DB")
 app.config["MYSQL_DATABASE_PORT"] = 3306
 mysql=MySQL(app)
 
-
-
+app.config['BASIC_AUTH_USERNAME'] = os.environ.get("MYSQL_USER")
+app.config['BASIC_AUTH_PASSWORD'] = os.environ.get("PASSWORD_AUTH")
 basic_auth = BasicAuth(app)
 
 @app.route('/')
