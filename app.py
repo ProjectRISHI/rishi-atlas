@@ -5,37 +5,41 @@ from flask_basicauth import BasicAuth
 import pandas as pd
 
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_HOST'] =os.environ.get("MYSQL_HOST")
-app.config["MYSQL_DATABASE_USER"] = os.environ.get("MYSQL_USER")
-app.config["MYSQL_DATABASE_PASSWORD"] = os.environ.get("MYSQL_PASSWORD")
-app.config["MYSQL_DATABASE_DB"] = os.environ.get("MYSQL_DB")
+app.config['MYSQL_DATABASE_HOST'] ="98.130.0.115"
+app.config["MYSQL_DATABASE_USER"] = "project_atlas"
+app.config["MYSQL_DATABASE_PASSWORD"] = "naJub6uB"
+app.config["MYSQL_DATABASE_DB"] = "project_soccent"
 app.config["MYSQL_DATABASE_PORT"] = 3306
 mysql=MySQL(app)
 
-app.config['BASIC_AUTH_USERNAME'] = os.environ.get("MYSQL_USER")
-app.config['BASIC_AUTH_PASSWORD'] = os.environ.get("PASSWORD_AUTH")
+app.config['BASIC_AUTH_USERNAME'] = "project_atlas"
+app.config['BASIC_AUTH_PASSWORD'] = "T3uwUPhuc!zaNeG"
+
+
+
 basic_auth = BasicAuth(app)
 
 @app.route('/')
 def start():
 	return render_template('index.html')
 
-# @app.route('/soccent')
-# def soccent():
-# 	conn=mysql.connect()
-# 	# Querying Database
-# 	query="""\
-# 	    SELECT * from soccent;
-# 	    """
-# 	df=pd.read_sql(query,conn)
+@app.route('/soccent')
+@basic_auth.required
+def soccent():
+	conn=mysql.connect()
+	# Querying Database
+	query="""\
+	    SELECT * from enterprise;
+	    """
+	df=pd.read_sql(query,conn)
 
-# 	# Creating Table HTML
-# 	data = ''
-# 	for index, row in df.iterrows():
-#		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Domain']+'</td><td>'+row['Email']+'</td><td>'+row['Phone']+'</td><td><a href="'+row['pdf']+'">PDF</a></td></tr>'
-# 		data = data + temp
-# 	conn.close()
-# 	return render_template('soccent.html', data=data)
+	# Creating Table HTML
+	data = ''
+	for index, row in df.iterrows():
+		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Domain']+'</td><td>'+row['Email']+'</td><td>'+row['Phone']+'</td>'+'</td><td>'+row['Product']+'</td><td><a href="'+row['pdf']+'" target="_blank">PDF</a></td></tr>'
+		data = data + temp
+	conn.close()
+	return render_template('soccent.html', data=data)
 
 @app.route('/alumni')
 @basic_auth.required
