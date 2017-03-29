@@ -21,7 +21,6 @@ def start():
 	return render_template('index.html')
 
 @app.route('/soccent')
-@basic_auth.required
 def soccent():
 	conn=mysql.connect()
 	# Querying Database
