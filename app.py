@@ -5,15 +5,12 @@ from flask_basicauth import BasicAuth
 import pandas as pd
 
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_HOST'] ="98.130.0.115"
-app.config["MYSQL_DATABASE_USER"] = "project_atlas"
-app.config["MYSQL_DATABASE_PASSWORD"] = "naJub6uB"
-app.config["MYSQL_DATABASE_DB"] = "project_soccent"
+app.config['MYSQL_DATABASE_HOST'] =os.environ.get("MYSQL_HOST")
+app.config["MYSQL_DATABASE_USER"] = os.environ.get("MYSQL_USER")
+app.config["MYSQL_DATABASE_PASSWORD"] = os.environ.get("MYSQL_PASSWORD")
+app.config["MYSQL_DATABASE_DB"] = os.environ.get("MYSQL_DB")
 app.config["MYSQL_DATABASE_PORT"] = 3306
 mysql=MySQL(app)
-
-app.config['BASIC_AUTH_USERNAME'] = "project_atlas"
-app.config['BASIC_AUTH_PASSWORD'] = "T3uwUPhuc!zaNeG"
 
 
 
