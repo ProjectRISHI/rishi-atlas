@@ -20,25 +20,24 @@ basic_auth = BasicAuth(app)
 def start():
 	return render_template('index.html')
 
-# @app.route('/soccent')
-# def soccent():
-# 	conn=mysql.connect()
-# 	# Querying Database
-# 	query="""\
-# 	    SELECT * from soccent;
-# 	    """
-# 	df=pd.read_sql(query,conn)
+@app.route('/soccent')
+def soccent():
+	conn=mysql.connect()
+	# Querying Database
+	query="""\
+	    SELECT * from enterprise;
+	    """
+	df=pd.read_sql(query,conn)
 
-# 	# Creating Table HTML
-# 	data = ''
-# 	for index, row in df.iterrows():
-#		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Domain']+'</td><td>'+row['Email']+'</td><td>'+row['Phone']+'</td><td><a href="'+row['pdf']+'">PDF</a></td></tr>'
-# 		data = data + temp
-# 	conn.close()
-# 	return render_template('soccent.html', data=data)
+	# Creating Table HTML
+	data = ''
+	for index, row in df.iterrows():
+		temp = '<tr><td>'+row['Name']+'</td><td>'+row['Domain']+'</td><td>'+row['Email']+'</td><td>'+row['Phone']+'</td>'+'</td><td>'+row['Product']+'</td><td><a href="'+row['pdf']+'" target="_blank">PDF</a></td></tr>'
+		data = data + temp
+	conn.close()
+	return render_template('soccent.html', data=data)
 
 @app.route('/alumni')
-@basic_auth.required
 def alumni():
 	conn=mysql.connect()
 	# Querying Database
