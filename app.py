@@ -38,7 +38,6 @@ def soccent():
 	return render_template('soccent.html', data=data)
 
 @app.route('/alumni')
-@basic_auth.required
 def alumni():
 	conn=mysql.connect()
 	# Querying Database
