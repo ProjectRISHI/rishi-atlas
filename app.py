@@ -1,19 +1,16 @@
 import os
-from flask import Flask,request,render_template,flash
+from flask import Flask,request,render_template,flash, Response
 from flaskext.mysql import MySQL
 from flask_basicauth import BasicAuth
 import pandas as pd
 import httplib2
 from apiclient import discovery
-from oauth2client import client
-from oauth2client import tools
+from oauth2client import client, tools
 from oauth2client.file import Storage
 from functools import wraps
-from flask import request, Response
 
 app = Flask(__name__)
 basic_auth = BasicAuth(app)
-
 
 authSheet = '1iHPGcH4q5pcgG5A82z9hxSOhjNPHXvdcSI8BL9XkgWg'
 authRange = 'Sheet1!A2:B'
@@ -98,7 +95,6 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-
 @app.route('/')
 def start():
     return render_template('index.html')
@@ -106,23 +102,18 @@ def start():
 @app.route('/soccent')
 @requires_auth
 def soccent():
-    # Creating Table HTML
-    data2 = ''
+    data = ''
     for row in getValues(soccentSheet, soccentRange):
-        temp = '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td><a href="'+row[5]+'" target="_blank">PDF</a></td></tr>'
-        data2 = data2 + temp
-    return render_template('soccent.html', data=data2)
+        data +=  '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td><a href="'+row[5]+'" target="_blank">PDF</a></td></tr>'
+    return render_template('soccent.html', data=data)
 
 @app.route('/alumni')
 @requires_auth
 def alumni():
-    # Creating Table HTML
-    data2 = ''
+    data = ''
     for row in getValues(alumniSheet, alumniRange):
-        temp = '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td>'+row[5]+'</td><td>'+row[6]+'</td></tr>'
-        data2 = data2 + temp
-    # conn.close()
-    return render_template('alumni.html', data=data2)
+        data += '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td>'+row[5]+'</td><td>'+row[6]+'</td></tr>'
+    return render_template('alumni.html', data=data)
 
 if __name__=="__main__":
     app.run(debug=False)
