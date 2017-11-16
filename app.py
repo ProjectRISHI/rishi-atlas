@@ -19,6 +19,16 @@ soccentRange = 'Sheet1!A2:F'
 alumniSheet = '12mJnLcmnO2cM-9tj0pL1TUGYq__2dRuRyHfQaS1feLY'
 alumniRange = 'Sheet1!B3:H'
 
+try:
+    import argparse
+    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
+except ImportError:
+    flags = None
+    
+SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
+CLIENT_SECRET_FILE = 'LINK TO FILE GOES HERE'
+APPLICATION_NAME = 'ATLAS'
+
 def get_credentials():
     """Gets valid user credentials from storage.
 
@@ -29,18 +39,12 @@ def get_credentials():
         Credentials, the obtained credential.
     """
 
-    # If modifying these scopes, delete your previously saved credentials
-    # at ~/.credentials/sheets.googleapis.com-python-quickstart.json
-    SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
-    CLIENT_SECRET_FILE = 'client_secret.json'
-    APPLICATION_NAME = 'Google Sheets API Python Quickstart'
-
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
     credential_path = os.path.join(credential_dir,
-                                   'sheets.googleapis.com-python-quickstart.json')
+                                   'sheets.googleapis.com-python-rishi-atlas.json')
 
     store = Storage(credential_path)
     credentials = store.get()
