@@ -78,9 +78,11 @@ def check_auth(username, password):
     """This function is called to check if a username /
     password combination is valid.
     """
-    for uname, pwd  in getValues(authSheet, authRange):
-        if username == uname and password == pwd:
-            return True
+    for elem  in getValues(authSheet, authRange):
+        if len(elem) == 2:
+            uname, pwd = elem
+            if username == uname and password == pwd:
+                return True
     return False
 
 def authenticate():
