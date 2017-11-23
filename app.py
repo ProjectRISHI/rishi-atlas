@@ -17,7 +17,7 @@ authRange = 'Sheet1!A2:B'
 soccentSheet = '18mY9pAnPhKs5uR0z5f1wjGgH7KqTsL9dUIzcEw3lbOc'
 soccentRange = 'Sheet1!A2:F'
 alumniSheet = '12mJnLcmnO2cM-9tj0pL1TUGYq__2dRuRyHfQaS1feLY'
-alumniRange = 'Sheet1!B3:H'
+alumniRange = 'Sheet1!B2:H'
 
 try:
     import argparse
@@ -110,7 +110,8 @@ def start():
 def soccent():
     data = ''
     for row in getValues(soccentSheet, soccentRange):
-        data +=  '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td><a href="'+row[5]+'" target="_blank">PDF</a></td></tr>'
+        if len(row) == 6:
+            data +=  '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td><a href="'+row[5]+'" target="_blank">PDF</a></td></tr>'
     return render_template('soccent.html', data=data)
 
 @app.route('/alumni')
@@ -118,7 +119,8 @@ def soccent():
 def alumni():
     data = ''
     for row in getValues(alumniSheet, alumniRange):
-        data += '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td>'+row[5]+'</td><td>'+row[6]+'</td></tr>'
+        if len(row) == 7:
+            data += '<tr><td>'+row[0]+'</td><td>'+row[1]+'</td><td>'+row[2]+'</td><td>'+row[3]+'</td><td>'+row[4]+'</td><td>'+row[5]+'</td><td>'+row[6]+'</td></tr>'
     return render_template('alumni.html', data=data)
 
 if __name__=="__main__":
