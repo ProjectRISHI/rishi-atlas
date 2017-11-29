@@ -1,6 +1,5 @@
 import os
 from flask import Flask,request,render_template,flash, Response
-from flaskext.mysql import MySQL
 from flask_basicauth import BasicAuth
 import pandas as pd
 import httplib2
@@ -12,12 +11,12 @@ from functools import wraps
 app = Flask(__name__)
 basic_auth = BasicAuth(app)
 
-authSheet = '1iHPGcH4q5pcgG5A82z9hxSOhjNPHXvdcSI8BL9XkgWg'
+authSheet = os.environ.get("AUTH_SHEET")
 authRange = 'Sheet1!A2:B'
-soccentSheet = '18mY9pAnPhKs5uR0z5f1wjGgH7KqTsL9dUIzcEw3lbOc'
+soccentSheet = os.environ.get("SOCCENT_SHEET")
 soccentRange = 'Sheet1!A2:F'
-alumniSheet = '12mJnLcmnO2cM-9tj0pL1TUGYq__2dRuRyHfQaS1feLY'
-alumniRange = 'Sheet1!B2:H'
+alumniSheet = os.environ.get("ALUMNI_SHEET")
+alumniRange = 'Form Responses 1!B2:H'
 
 try:
     import argparse
@@ -26,8 +25,8 @@ except ImportError:
     flags = None
     
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
-CLIENT_SECRET_FILE = 'LINK TO FILE GOES HERE'
 APPLICATION_NAME = 'ATLAS'
+SHEETS_JSON = os.environ.get("SHEETS_JSON")
 
 def get_credentials():
     """Gets valid user credentials from storage.
@@ -43,8 +42,7 @@ def get_credentials():
     credential_dir = os.path.join(home_dir, '.credentials')
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
-                                   'sheets.googleapis.com-python-rishi-atlas.json')
+    credential_path = os.path.join(credential_dir, SHEETS_JSON)
 
     store = Storage(credential_path)
     credentials = store.get()
